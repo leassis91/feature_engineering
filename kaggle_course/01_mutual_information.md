@@ -77,7 +77,7 @@ sns.relplot(x="curb_weight", y="price", data=df);
 
 ![image](https://user-images.githubusercontent.com/67332395/178113701-a8518420-4bab-476a-a5b8-1c42345e6a69.png)
 
-The _fuel type_ feature has a fairly low MI score, but as we can see from the figure, it clearly separates two _price_ populations with different trends within the horsepower feature. This indicates that _fuel_type_ contributes an interaction effect and might not be unimportant after all. Before deciding a feature is unimportant from its MI score, it's good to investigate any possible interaction effects -- domain knowledge can offer a lot of guidance here.
+The `fuel type` feature has a fairly low MI score, but as we can see from the figure, it clearly separates two `price` populations with different trends within the horsepower feature. This indicates that `fuel_type` contributes an interaction effect and might not be unimportant after all. Before deciding a feature is unimportant from its MI score, it's good to investigate any possible interaction effects -- domain knowledge can offer a lot of guidance here.
 
 `sns.lmplot(x="horsepower", y="price", hue="fuel_type", data=df);`
 
