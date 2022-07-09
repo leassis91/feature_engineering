@@ -66,3 +66,21 @@ plt.figure(dpi=100, figsize=(8, 5))
 plot_mi_scores(mi_scores)
 ```
 ![mutual information scores](https://user-images.githubusercontent.com/67332395/178092068-45b22c7e-379c-42f7-b491-00a6dae17c5a.png)
+
+Let's take a closer look at a couple of these. 
+As we might expect, the high-scoring ```curb_weight``` feature exhibits a strong relationship with ```price```, the target.
+
+
+```
+sns.relplot(x="curb_weight", y="price", data=df);
+```
+
+![image](https://user-images.githubusercontent.com/67332395/178113701-a8518420-4bab-476a-a5b8-1c42345e6a69.png)
+
+The _fuel type_ feature has a fairly low MI score, but as we can see from the figure, it clearly separates two _price_ populations with different trends within the horsepower feature. This indicates that _fuel_type_ contributes an interaction effect and might not be unimportant after all. Before deciding a feature is unimportant from its MI score, it's good to investigate any possible interaction effects -- domain knowledge can offer a lot of guidance here.
+
+`sns.lmplot(x="horsepower", y="price", hue="fuel_type", data=df);`
+
+![image](https://user-images.githubusercontent.com/67332395/178113894-24061050-5382-45dd-98ef-210ea8b4d240.png)
+
+Time to exercise!
