@@ -62,3 +62,38 @@ The animation below shows the algorithm in action. It illustrates the dependence
 ![image](https://i.imgur.com/tBkCqXJ.gif)
 
 You may need to increase the max_iter for a large number of clusters or n_init for a complex dataset. Ordinarily though the only parameter you'll need to choose yourself is n_clusters (k, that is). The best partitioning for a set of features depends on the model you're using and what you're trying to predict, so it's best to tune it like any hyperparameter (through cross-validation, say).
+
+
+## Training with an example
+
+### California Housing Data
+
+```
+from sklearn.cluster import KMeans
+
+df = pd.read_csv('housing.csv')
+X = df.loc[:, ['MedInc', 'Latitude', 'Longitude']]
+X.head()
+
+- Creating cluster feature 
+kmeans = KMeans(n_clusters=6)
+X['Cluster'] = kmeans.fit_predict(X)
+X['Cluster'] = X['Cluster'].astype("category")
+
+X.head()
+
+sns.relplot(
+    x='Longitude', y='Latitude', hue='Cluster', data=X, height=6);
+```
+![image](https://user-images.githubusercontent.com/67332395/179788397-89e94c7a-3625-448f-90a1-bfdc5f0418b5.png)
+
+The target in this dataset is `MedHouseVal` (median house value). These box-plots show the distribution of the target within each cluster. If the clustering is informative, these distributions should, for the most part, separate across `MedHouseVal`, which is indeed what we see.
+
+```
+X['MedHouseVal'] = df['MedHouseVal']
+sns.catplot(
+    x='MedHouseVal', y='Cluster', data=X, kind='boxen', height=6);
+```
+![image](https://user-images.githubusercontent.com/67332395/179788820-21108ab6-d81b-4e80-82e6-f9340281216b.png)
+
+
