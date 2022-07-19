@@ -40,6 +40,20 @@ sns.kdeplot(accidents.LogWindSpeed, shade=True, ax=axs[1]);
 
 ![image](https://user-images.githubusercontent.com/67332395/179639144-0df7fce5-bdd0-4f71-903a-5f0b5b6adb56.png)
 
+## Counts
+
+Features describing the presence or absence of something often come in sets, the set of risk factors for a disease, say. You can aggregate such features by creating a count.
+
+These features will be binary (1 for Present, 0 for Absent) or boolean (True or False). In Python, booleans can be added up just as if they were integers.
+
+
+```
+roadway_features = ["Amenity", "Bump", "Crossing", "GiveWay", "Junction", "NoExit", "Railway", "Roundabout", "Station", "Stop", "TrafficCalming", "TrafficSignal"]
+
+accidents["RoadwayFeatures"] = accidents[roadway_features].sum(axis=1)
+accidents[roadway_features + ["RoadwayFeatures"]].head(10)
+```
+
 
 
 ## More tips on creating Features
