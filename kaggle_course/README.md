@@ -4,6 +4,10 @@ I'll take some notes I find interesting and resourceful from this [course](https
 
 This course teach about one of the most important steps on the way to build a great machine learning model: *feature engineering*.
 
+- Class 01: [Mutual Information](https://github.com/leassis91/feature_engineering/blob/master/kaggle_course/01_mutual_information.md)
+- Class 02: [Feature Creation](https://github.com/leassis91/feature_engineering/blob/master/kaggle_course/02_creating_features.md)
+- Class 03: [K-Means Clustering](https://github.com/leassis91/feature_engineering/blob/master/kaggle_course/03_clustering_kmeans.md)
+
 I'll learn how to
 
   - determine which features are the most important with **MUTUAL INFORMATION**
