@@ -10,6 +10,8 @@ A clustering algorithm makes "birds of a feather flock together".
 When used for FEATURE ENGINEERING, we could attempt to discover groups of customers representing a makret segment, for instance, or geographiic areas that share similar weather patterns.
 Adding a feature of cluster labels can help machine learning models untangle complicated relationsihps of space or proximity.
 
+***
+
 ## Cluster Labels as a Feature
 
 Clustering acts like traditional "binning" or "discretization" transform. Multiple features >> *vector quantization*, or just "multi-dimensional binning".
@@ -26,6 +28,8 @@ Added to a dataframe, a feature of cluster labels might look like this:
 | -93.638   | 42.060   | 1 |
 | -93.602   | 41.988   | 0 |
 
+
+
 Remember: `Cluster` feature is **categorical.** Here, it's shown with a label encoding as a typical clusstering algorithms would produce; depending on your model, a one-hot encoding may be more appropriate.
 
 The motivating idea for adding cluster labels is that the clusters will break up complicated relationships across features into simpler chunks. 
@@ -34,7 +38,10 @@ Our model can then just learn the simpler chunks one-by-one instead of having to
 ![image](https://user-images.githubusercontent.com/67332395/179779409-7c70e24f-3561-44b7-9abf-0f846443a526.png)
 _Clustering the YearBuilt feature helps this linear model learn its relationship to SalePrice._
 
+
 The figure shows how clustering can improve a simple linear model. The curved relationship between the YearBuilt and SalePrice is too complicated for this kind of model -- it underfits. On smaller chunks however the relationship is almost linear, and that the model can learn easily.
+
+***
 
 ## k-Means Clustering
 
@@ -53,3 +60,5 @@ It often happens that the initial random position of the centroids ends in a poo
 The animation below shows the algorithm in action. It illustrates the dependence of the result on the initial centroids and the importance of iterating until convergence.
 
 ![image](https://i.imgur.com/tBkCqXJ.gif)
+
+You may need to increase the max_iter for a large number of clusters or n_init for a complex dataset. Ordinarily though the only parameter you'll need to choose yourself is n_clusters (k, that is). The best partitioning for a set of features depends on the model you're using and what you're trying to predict, so it's best to tune it like any hyperparameter (through cross-validation, say).
